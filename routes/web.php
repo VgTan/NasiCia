@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,15 @@ Route::get('/', function() {
     return Inertia::render('Home');
 });
 
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/admin', 'LoginPage')->name('admin.login');
+});
+
+// Route::get('/admin', function() {
+//     return Inertia::render('admin/Login');
+// });
+
+return Inertia::render('admin/Login');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
