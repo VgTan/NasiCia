@@ -1,7 +1,7 @@
 export default function Navbar() {
     return (
         <>
-            <div className="fixed flex justify-between w-full h-20 items-center">
+            <div className="fixed z-1 flex justify-between w-full h-20 items-center top-0">
                 <div className="flex items-center justify-evenly w-3/5 h-full">
                     <div className="logonama flex gap-1 items-center">
                         <div className="w-20">

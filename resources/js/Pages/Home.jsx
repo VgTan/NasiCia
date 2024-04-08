@@ -1,5 +1,6 @@
 import Navbar from "@/Components/Navbar"
-import Card from "@/Components/Card"
+import CategoryCard from "@/Components/Card/CategoryCard"
+import Card from "@/Components/Card/Card"
 
 const Home = ({menus}) => {
     return (
@@ -23,7 +24,7 @@ const Home = ({menus}) => {
                                     commodo consequat.
                                 </div>
                             </div>
-                            <div className="mt-10 flex justify-center">
+                            <div className="mt-5 flex justify-center">
                                 <div>
                                     <div className="flex gap-2">
                                         <span>My Location</span>
@@ -37,21 +38,135 @@ const Home = ({menus}) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex flex-wrap">
-                                <Card name="Rice Bowl"></Card>
-                                <Card name="Bento"></Card>
-                                <Card name="Mentai Rice"></Card>
-                                <Card name="Nusantara"></Card>
-                                <Card name="Snack"></Card>
+                            <div className="flex flex-wrap justify-center gap-3 mt-5">
+                                <CategoryCard name="Rice Bowl"></CategoryCard>
+                                <CategoryCard name="Bento"></CategoryCard>
+                                <CategoryCard name="Mentai Rice"></CategoryCard>
+                                <CategoryCard name="Nusantara"></CategoryCard>
+                                <CategoryCard name="Snack"></CategoryCard>
                             </div>
                         </div>
                         {/*carousel */}
+                        <div className="w-1/2">
+
+                        </div>
                     </div>
-                    {/* <div className="flex flex-wrap">
-                        {menus.map(menu => (
-                            <Card key={menu.id} name={menu.name}></Card>
-                        ))}
-                    </div> */}
+                    <div className="mt-24 px-16">
+                        <div className="text-5xl text-center mb-10">MENU</div>
+                        <div className="Rice Bowl">
+                            <div className="mb-5 sticky top-0">
+                                <div className="text-4xl ">RICE BOWL</div>
+                            </div>
+                            <div className="text-xl text-start">Chicken Rice Bowl</div>
+                            {/*Chicken Rice Bowl*/}
+                            <div className="flex flex-wrap gap-5">
+                                {menus
+                                .filter(menu => menu.category == 'Chicken Rice Bowl')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+
+                            {/*Fish Rice Bowl*/}
+                            <div className="mb-5 mt-10">
+                                <div className="text-xl text-start">Fish Rice Bowl</div>
+                            </div>
+                            <div className="flex flex-wrap gap-5">
+                                {menus
+                                .filter(menu => menu.category == 'Fish Rice Bowl')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+
+                            {/*Shrimp Rice Bowl*/}
+                            <div className="mb-5 mt-10">
+                                <div className="text-xl text-start">Shrimp Rice Bowl</div>
+                            </div>
+                            <div className="flex flex-wrap gap-5">
+                                {menus
+                                .filter(menu => menu.category == 'Shrimp Rice Bowl')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+                            {/*Beef Rice Bowl*/}
+                            <div className="mb-5 mt-10">
+                                <div className="text-xl text-start">Beef Rice Bowl</div>
+                            </div>
+                            <div className="flex flex-wrap gap-5">
+                                {menus
+                                .filter(menu => menu.category == 'Beef Rice Bowl')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+                        </div>
+
+                        {/*Bento*/}
+                        <div className="Bento mt-10">
+                            <div className="mb-5 sticky top-0">
+                                <div className="text-4xl">BENTO</div>
+                            </div>
+                            <div className="flex flex-wrap gap-5 justify-start">
+                                {menus
+                                .filter(menu => menu.category == 'Bento')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+                        </div>
+
+                        {/*MENTAI RICE*/}
+                        <div className="MENTAI RICE mt-10">
+                            <div className="mb-5 sticky top-0">
+                                <div className="text-4xl">MENTAI RICE</div>
+                            </div>
+                            <div className="flex flex-wrap gap-5 justify-start">
+                                {menus
+                                .filter(menu => menu.category == 'Mentai Rice')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+                        </div>
+
+                        {/*NUSANTARA*/}
+                        <div className="NUSANTARA mt-10">
+                            <div className="mb-5 sticky top-0">
+                                <div className="text-4xl">NUSANTARA</div>
+                            </div>
+                            <div className="flex flex-wrap gap-5 justify-start">
+                                {menus
+                                .filter(menu => menu.category == 'Nusantara')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+                        </div>
+
+                        {/*SNACK*/}
+                        <div className="SNACK mt-10">
+                            <div className="mb-5 sticky top-0">
+                                <div className="text-4xl">SNACK</div>
+                            </div>
+                            <div className="flex flex-wrap gap-5 justify-start">
+                                {menus
+                                .filter(menu => menu.category == 'Snack')
+                                .map(menu => (
+                                    <Card key={menu.id} name={menu.name}></Card>
+                                ))
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
             {/* </div> */}
         </>
