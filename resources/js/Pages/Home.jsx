@@ -1,7 +1,7 @@
 import Navbar from "@/Components/Navbar"
 import Card from "@/Components/Card"
 
-export default function Home() {
+const Home = ({menus}) => {
     return (
         <>
             {/* <div className="absolute right-0 overflow-hidden md:px-12">
@@ -37,18 +37,24 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
+                            <div className="flex flex-wrap">
+                                <Card name="Rice Bowl"></Card>
+                                <Card name="Bento"></Card>
+                                <Card name="Mentai Rice"></Card>
+                                <Card name="Nusantara"></Card>
+                                <Card name="Snack"></Card>
+                            </div>
                         </div>
                         {/*carousel */}
                     </div>
-                    <div className="flex justify-evenly">
-                        <Card>
-                            img = "/images/"
-                        </Card>
-                        <Card></Card>
-                        <Card></Card>
-                    </div>
+                    {/* <div className="flex flex-wrap">
+                        {menus.map(menu => (
+                            <Card key={menu.id} name={menu.name}></Card>
+                        ))}
+                    </div> */}
                 </div>
             {/* </div> */}
         </>
     )
 }
+export default Home;

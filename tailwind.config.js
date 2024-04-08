@@ -9,7 +9,6 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.jsx',
         './resources/css/app.css',
-        "./node_modules/tw-elements-react/dist/js/**/*.js"
     ],
 
     theme: {
@@ -20,5 +19,5 @@ export default {
         },
     },
 
-    plugins: [forms, require("tw-elements-react/dist/plugin.cjs")],
+    plugins: [forms],
 };

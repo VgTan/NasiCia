@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -15,8 +16,8 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::get('/', function() {
-    return Inertia::render('Home');
+Route::controller(MenuController::class)->group(function() {
+    Route::get('/', 'index')->name('homeMenu');
 });
 
 Route::controller(AuthController::class)->group(function() {
