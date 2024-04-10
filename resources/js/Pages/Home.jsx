@@ -26,17 +26,6 @@ const Home = ({ menus }) => {
 
     const handleAddToCart = () => {
         setIsCartOpen(true);
-        const selectedItemsWithNames = Object.entries(selectedItems).map(
-        ([itemId, quantity]) => {
-            const menuItem = menus.find((menu) => menu.id === itemId);
-            console.log("Menu item found:", menuItem);
-            return {
-                name: menuItem?.name,
-                quantity: quantity
-            };
-        }
-    );
-    console.log("Selected items with names:", selectedItemsWithNames);
     };
 
     return (
@@ -147,9 +136,10 @@ const Home = ({ menus }) => {
                                     <Card
                                         id={menu.id}
                                         name={menu.name}
+                                        price={menu.price}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
+                                        quantity={selectedItems[menu.id] || 0 }
                                     />
                                 ))}
                         </div>
@@ -168,6 +158,7 @@ const Home = ({ menus }) => {
                                     <Card
                                         id={menu.id}
                                         name={menu.name}
+                                        price={menu.price}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
                                         quantity={selectedItems[menu.id] || 0}
@@ -190,6 +181,7 @@ const Home = ({ menus }) => {
                                     <Card
                                         id={menu.id}
                                         name={menu.name}
+                                        price={menu.price}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
                                         quantity={selectedItems[menu.id] || 0}
@@ -211,6 +203,7 @@ const Home = ({ menus }) => {
                                     <Card
                                         id={menu.id}
                                         name={menu.name}
+                                        price={menu.price}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
                                         quantity={selectedItems[menu.id] || 0}
@@ -229,7 +222,8 @@ const Home = ({ menus }) => {
                                 .filter((menu) => menu.category === "Bento")
                                 .map((menu) => (
                                     <Card
-                                        id={menu.id}
+                                        price={menu.price}id
+                                        ={menu.id}
                                         name={menu.name}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
@@ -253,6 +247,7 @@ const Home = ({ menus }) => {
                                     <Card
                                         id={menu.id}
                                         name={menu.name}
+                                        price={menu.price}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
                                         quantity={selectedItems[menu.id] || 0}
@@ -271,7 +266,8 @@ const Home = ({ menus }) => {
                                 .filter((menu) => menu.category === "Nusantara")
                                 .map((menu) => (
                                     <Card
-                                        id={menu.id}
+                                        price={menu.price}id
+                                        ={menu.id}
                                         name={menu.name}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
@@ -291,7 +287,8 @@ const Home = ({ menus }) => {
                                 .filter((menu) => menu.category === "Snack")
                                 .map((menu) => (
                                     <Card
-                                        id={menu.id}
+                                        price={menu.price}id
+                                        ={menu.id}
                                         name={menu.name}
                                         addSelectedItems={addSelectedItems}
                                         minusSelectedItems={minusSelectedItems}
@@ -315,16 +312,13 @@ const Home = ({ menus }) => {
                         </h2>
                         <ul>
                             {Object.entries(selectedItems).map(
-                                ([itemId, quantity]) => (
-                                    <li key={itemId}>
-                                        Name:{" "}
-                                        {
-                                            menus.find(
-                                                (menu) => menu.id === itemId
-                                            )?.name
-                                        }
-                                        , Quantity: {quantity}
+                                ([id, quantity]) => (
+                                    quantity != 0 ? (
+                                    <li key={id}>
+                                        Name: {menus.find(menu => menu.id == id).name}
+                                        , Quantity: {quantity}, Price: {(menus.find(menu => menu.id == id).price * quantity).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                     </li>
+                                    ) : null
                                 )
                             )}
                         </ul>
