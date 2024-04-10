@@ -5,7 +5,7 @@ import { BsTelephone } from "react-icons/bs";
 export default function Navbar() {
     return (
         <>
-            <div className="fixed z-999 flex justify-between w-full h-20 items-center top-3 font-nunito mx-10">
+            <div className="fixed z-[999] flex justify-between w-full h-20 items-center top-3 font-nunito mx-10">
                 <div className="flex items-center justify-evenly w-2/4 h-full">
                     <div className="logonama flex gap-0 items-center">
                         <div className="w-20">
