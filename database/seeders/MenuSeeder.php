@@ -15,91 +15,91 @@ class MenuSeeder extends Seeder
     {
         Menu::create([
             'name' => 'Koren Spicy Chicken',
-            'description' => ' ',
+            'description' => 'Spicy chicken seasoned with Korean-inspired spices',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Honey Garlic Chicken',
-            'description' => ' ',
+            'description' => 'Chicken glazed in honey and garlic sauce',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Mushroom Sauce',
-            'description' => ' ',
+            'description' => 'Chicken cooked in a savory mushroom sauce',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Salted Egg',
-            'description' => ' ',
+            'description' => 'Chicken dish with a rich salted egg flavor',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Karage Egg Mayo',
-            'description' => ' ',
+            'description' => 'Crispy chicken topped with creamy mayo',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Katsu Teriyaki',
-            'description' => ' ',
+            'description' => 'Juicy chicken served with sweet teriyaki sauce',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Katsu Teriyaki Egg Mayo',
-            'description' => ' ',
+            'description' => 'Crunchy chicken with savory teriyaki and mayo',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Geprek Mozarella',
-            'description' => ' ',
+            'description' => 'Tender chicken topped with melted mozzarella cheese',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Chicken Teriyaki',
-            'description' => ' ',
+            'description' => 'Tender chicken glazed in savory teriyaki sauce',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Ayam Saos Mentega',
-            'description' => ' ',
+            'description' => 'Succulent chicken served with creamy butter sauce',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Ayam Cabe Garam',
-            'description' => ' ',
+            'description' => 'Spicy chicken seasoned with aromatic chili spices',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Ayam Geprek',
-            'description' => ' ',
+            'description' => 'Crispy chicken topped with spicy sambal sauce',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
         ]);
         Menu::create([
             'name' => 'Ayam Sambal Matah',
-            'description' => ' ',
+            'description' => 'Juicy chicken served with tangy matah sambal',
             'image' => '',
             'category' => 'Chicken Rice Bowl',
             'price' => 30000,
@@ -254,20 +254,20 @@ class MenuSeeder extends Seeder
             'category' => 'Beef Rice Bowl',
             'price' => 38000,
         ]);
-        //Bento
+        //Drink
         Menu::create([
-            'name' => 'Chicken Katsu Bento',
+            'name' => 'Dalgona Milk',
             'description' => ' ',
             'image' => '',
-            'category' => 'Bento',
-            'price' => 30000,
+            'category' => 'Drink',
+            'price' => 15000,
         ]);
         Menu::create([
-            'name' => 'Ebi Katsu Bento',
+            'name' => 'Strawberry Milk',
             'description' => ' ',
             'image' => '',
-            'category' => 'Bento',
-            'price' => 30000,
+            'category' => 'Drink',
+            'price' => 15000,
         ]);
         //Mentai Rice
         Menu::create([

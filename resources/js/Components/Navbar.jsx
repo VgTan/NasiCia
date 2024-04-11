@@ -15,7 +15,7 @@ export default function Navbar() {
                     <div className="flex flex-wrap justify-center gap-2">
                     <MdOutlineSort size="1.5em" className=" "/>
                         <form action="">
-                            <select name="Category" id="" class="appearance-none border-none p-0 pr-7 font-extrabold">
+                            <select name="Category" id="" class="appearance-none border-none p-0 pr-7 font-extrabold bg-transparent">
                                 <option value="">Categories</option>
                                 <option value="main">Main Dishes</option>
                                 <option value="side">Side Dishes</option>

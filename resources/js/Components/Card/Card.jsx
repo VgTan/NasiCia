@@ -11,20 +11,20 @@ export default function Card({ id, name, img, desc, href, quantity, addSelectedI
     };
 
     return (
-        <div className="z-0">
-            <div className="">
-                {img}
+        <div className="flex md:border md:rounded-lg md:py-4 md:px-6 z-0">
+            <div className="w-[92px] md:w-[172px] cursor-pointer">
+                <img src={img} alt="Menu Photo" className='w-full rounded-lg'/>
             </div>
-            <div className="w-[150px] h-[200px] flex flex-col justify-between py-3 px-2 hover:bg-yellow-300 hover:scale-105 hover:cursor-pointer transition duration-200  border-black border rounded-lg">
-                <a href={href} className="text-center">
-                    <p>{name}</p>
-                    <p>{price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</p>
+            <div className="flex-1 pl-[15px] md:pl-[30px] space-y-1 md:space-y-2 w-[150px] h-auto">
+                <a href={href} className="">
+                    <p className='text-[#222126] text-[14px] md:text-[20px] font-semibold'>{name}</p>
+                    <p className='flex text-[#42754C] font-bold space-x-1'>{price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</p>
+                    <p className='mb-0 text-[#828282] font-medium text-[11px] md:text-[12px]'>{desc}</p>
                 </a>
-                {/* Plus and minus buttons for adjusting quantity */}
-                <div className="flex justify-between items-center">
-                    <button onClick={handleRemoveFromSelectedItems} disabled={quantity === 0} className="bg-gray-200 text-gray-600 hover:bg-gray-300 rounded-full px-2">-</button>
-                    <span>{quantity}</span>
-                    <button onClick={handleAddToSelectedItems} className="bg-gray-200 text-gray-600 hover:bg-gray-300 rounded-full px-2">+</button>
+                <div className="flex self-end">
+                    <button onClick={handleRemoveFromSelectedItems} disabled={quantity === 0} className="bg-[#42754c49] text-gray-600 hover:bg-gray-300 rounded-full px-2.5">-</button>
+                    <span className='mx-3'>{quantity}</span>
+                    <button onClick={handleAddToSelectedItems} className="bg-[#42754c49] text-gray-600 hover:bg-gray-300 rounded-full px-2.5">+</button>
                 </div>
             </div>
         </div>
