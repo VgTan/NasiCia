@@ -30,6 +30,7 @@ const Home = ({ menus }) => {
 
     return (
         <>
+       
             <div className="absolute"></div>
             <div className="absolute right-0 overflow-hidden md:px-12 z-[-1]">
                 <div className="bg-yellow-500 md:p-72 rounded-bl-[100px] md:-skew-x-[11deg] md:translate-x-20 md:scale-x-110"></div>

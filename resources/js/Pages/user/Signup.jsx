@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { router } from '@inertiajs/react';
 
 function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+  const [input, SetInput] = useState({
+    name: "",
+    email: "",
+    password: ""
+  })
+
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const response = await axios.post('/api/register', { name, email, password });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    router.post("/submit-signup", {name, email, password})
   };
 
   return (

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\isLoggedIn;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,8 +28,17 @@ Route::controller(MenuController::class)->group(function() {
 
 Route::controller(AuthController::class)->group(function() {
     Route::get('/admin', 'LoginPage')->name('admin.login');
+    Route::get('/signup', 'signupIndex')->middleware(isLoggedIn::class);
+    Route::post('/submit-signup', 'signup')->middleware(isLoggedIn::class);
+
+    Route::get('/login', 'loginIndex')->name("login")->middleware(isLoggedIn::class);
+    Route::post('/submit-login', 'login')->middleware(isLoggedIn::class);
     
+    Route::get('/logout', 'logout');
+
 });
+
+
 
 // Route::get('/admin', function() {
 //     return Inertia::render('admin/Login');

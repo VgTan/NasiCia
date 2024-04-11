@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { router } from '@inertiajs/react';
 
-function Login() {
+function Login({ user, accessToken }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('/api/login', { email, password });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    router.post("/submit-login", {email, password})
   };
 
   return (
