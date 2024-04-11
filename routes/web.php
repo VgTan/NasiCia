@@ -15,6 +15,9 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
+Route::get('/login', function () {
+    return view('user.login');
+});
 
 Route::controller(MenuController::class)->group(function() {
     Route::get('/', 'index')->name('homeMenu');
