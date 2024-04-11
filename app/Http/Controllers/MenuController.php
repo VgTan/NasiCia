@@ -16,4 +16,11 @@ class MenuController extends Controller
         ]);
     }
 
+    public function cart() {
+        $AllMenu = Menu::all();
+        return Inertia::render('user/Cart', [
+            'menus' => $AllMenu
+        ]);
+    }
+
 }
