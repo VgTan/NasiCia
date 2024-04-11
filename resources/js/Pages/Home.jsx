@@ -76,7 +76,7 @@ const Home = ({ menus }) => {
                                     <form className="flex" action="">
                                         <input
                                             type="text"
-                                            className="bg-transparent border-none w-full py-4 pr-10 pl-10 text-black lg:text-lg text-lg leading-tight focus:border-transparent focus:ring-0 focus:shadow-outline placeholder-gray-400"
+                                            className="bg-transparent border-none py-4 pr-10 pl-10 text-black lg:text-lg text-lg leading-tight focus:border-transparent focus:ring-0 focus:shadow-outline placeholder-gray-400"
                                             placeholder="Search..."
                                         />
                                         <button className="bg-[#353434] text-white py-4 px-10 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner hover:bg-[#4e4d4d]">
@@ -118,184 +118,267 @@ const Home = ({ menus }) => {
                         <img src="/images/ricemain.png" alt="" />
                     </div>
                 </div>
-                <div className="mt-24 px-16">
-                    <div className="text-5xl text-center mb-10">MENU</div>
-                    <div className="Rice Bowl">
-                        <div className="mb-5 sticky top-0">
-                            <div className="text-4xl ">RICE BOWL</div>
-                        </div>
-                        <div className="text-xl text-start">
-                            Chicken Rice Bowl
-                        </div>
-                        <div className="flex flex-wrap gap-5">
-                            {menus
-                                .filter(
-                                    (menu) =>
-                                        menu.category === "Chicken Rice Bowl"
-                                )
-                                .map((menu) => (
-                                    <Card
-                                        id={menu.id}
-                                        name={menu.name}
-                                        price={menu.price}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0 }
-                                    />
+                <div className="mt-12 px-16">
+                    <div className="flex mt-10 md:mt-[60px] flex-col md:flex-row">
+                        <div className="md:w-[230px] sticky-element">
+                            <div id="sticky">
+                                <ul class="overflow-auto flex whitespace-nowrap md:whitespace-normal flex-row md:flex-col md:space-y-8 items-end border-b b-[#EAEAEA] md:border-b-0 pb-4 md:pb-0 mb-4 md:mb-0">
+                                {menus.filter((menu, index, self) => 
+                                    index === self.findIndex((m) => (
+                                        m.category === menu.category
+                                    ))
+                                ).map(menu => (
+                                    <li className="mr-4 md:mr-0 text-right">
+                                        <a href={`#${menu.category}`} className="text-[14px] md:text-[20px] font-semibold hover:text-[#42754C] cursor-pointer text-extrabold">
+                                            <span>{menu.category}</span>
+                                        </a>
+                                    </li>
                                 ))}
-                        </div>
-                        {/* Fish Rice Bowl */}
-                        <div className="mb-5 mt-10">
-                            <div className="text-xl text-start">
-                                Fish Rice Bowl
+                                </ul>
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-5">
-                            {menus
-                                .filter(
-                                    (menu) => menu.category === "Fish Rice Bowl"
-                                )
-                                .map((menu) => (
-                                    <Card
-                                        id={menu.id}
-                                        name={menu.name}
-                                        price={menu.price}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
-                                    />
-                                ))}
-                        </div>
-                        {/* Shrimp Rice Bowl */}
-                        <div className="mb-5 mt-10">
-                            <div className="text-xl text-start">
-                                Shrimp Rice Bowl
+                        <div className="md:flex-1 md:pl-[80px] space-y-[50px]">
+                            <div className="Rice Bowl">
+                                <div className="mb-3 top-0">
+                                    <div className="uppercase text-[#222126] text-[14px] md:text-[32px] font-extrabold mb-7 md:mb-[18px]">RICE BOWL</div>
+                                </div>
+                                <div id="Chicken Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
+                                    Chicken Rice Bowl
+                                </div>
+                                <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3">
+                                    {menus
+                                        .filter(
+                                            (menu) =>
+                                                menu.category ===
+                                                "Chicken Rice Bowl"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                id={menu.id}
+                                                name={menu.name}
+                                                price={menu.price}
+                                                desc={menu.description}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
+                                {/* Fish Rice Bowl */}
+                                <div className="mb-5 mt-10">
+                                    <div id="Fish Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
+                                        Fish Rice Bowl
+                                    </div>
+                                </div>
+                                <div className="flex flex-wrap gap-5">
+                                    {menus
+                                        .filter(
+                                            (menu) =>
+                                                menu.category ===
+                                                "Fish Rice Bowl"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                id={menu.id}
+                                                name={menu.name}
+                                                price={menu.price}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
+                                {/* Shrimp Rice Bowl */}
+                                <div className="mb-5 mt-10">
+                                    <div id="Shrimp Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
+                                        Shrimp Rice Bowl
+                                    </div>
+                                </div>
+                                <div className="flex flex-wrap gap-5">
+                                    {menus
+                                        .filter(
+                                            (menu) =>
+                                                menu.category ===
+                                                "Shrimp Rice Bowl"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                id={menu.id}
+                                                name={menu.name}
+                                                price={menu.price}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
+                                {/* Beef Rice Bowl */}
+                                <div className="mb-5 mt-10">
+                                    <div id="Beef Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
+                                        Beef Rice Bowl
+                                    </div>
+                                </div>
+                                <div className="flex flex-wrap gap-5">
+                                    {menus
+                                        .filter(
+                                            (menu) =>
+                                                menu.category ===
+                                                "Beef Rice Bowl"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                id={menu.id}
+                                                name={menu.name}
+                                                price={menu.price}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex flex-wrap gap-5">
-                            {menus
-                                .filter(
-                                    (menu) =>
-                                        menu.category === "Shrimp Rice Bowl"
-                                )
-                                .map((menu) => (
-                                    <Card
-                                        id={menu.id}
-                                        name={menu.name}
-                                        price={menu.price}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
-                                    />
-                                ))}
-                        </div>
-                        {/* Beef Rice Bowl */}
-                        <div className="mb-5 mt-10">
-                            <div className="text-xl text-start">
-                                Beef Rice Bowl
+
+                            {/* Drink */}
+                            <div className="Drink mt-10">
+                                <div className="mb-5 sticky top-0">
+                                    <div id="Drink" className="text-4xl">DRINKS</div>
+                                </div>
+                                <div className="flex flex-wrap gap-5 justify-start">
+                                    {menus
+                                        .filter(
+                                            (menu) => menu.category === "Drink"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                price={menu.price}
+                                                id={menu.id}
+                                                name={menu.name}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex flex-wrap gap-5">
-                            {menus
-                                .filter(
-                                    (menu) => menu.category === "Beef Rice Bowl"
-                                )
-                                .map((menu) => (
-                                    <Card
-                                        id={menu.id}
-                                        name={menu.name}
-                                        price={menu.price}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
-                                    />
-                                ))}
-                        </div>
-                    </div>
 
-                    {/* Bento */}
-                    <div className="Bento mt-10">
-                        <div className="mb-5 sticky top-0">
-                            <div className="text-4xl">BENTO</div>
-                        </div>
-                        <div className="flex flex-wrap gap-5 justify-start">
-                            {menus
-                                .filter((menu) => menu.category === "Bento")
-                                .map((menu) => (
-                                    <Card
-                                        price={menu.price}id
-                                        ={menu.id}
-                                        name={menu.name}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
-                                    />
-                                ))}
-                        </div>
-                    </div>
+                            {/* MENTAI RICE */}
+                            <div className="MENTAI RICE mt-10">
+                                <div className="mb-5 sticky top-0">
+                                    <div id="Mentai Rice" className="text-4xl">MENTAI RICE</div>
+                                </div>
+                                <div className="flex flex-wrap gap-5 justify-start">
+                                    {menus
+                                        .filter(
+                                            (menu) =>
+                                                menu.category === "Mentai Rice"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                id={menu.id}
+                                                name={menu.name}
+                                                price={menu.price}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
+                            </div>
 
-                    {/* MENTAI RICE */}
-                    <div className="MENTAI RICE mt-10">
-                        <div className="mb-5 sticky top-0">
-                            <div className="text-4xl">MENTAI RICE</div>
-                        </div>
-                        <div className="flex flex-wrap gap-5 justify-start">
-                            {menus
-                                .filter(
-                                    (menu) => menu.category === "Mentai Rice"
-                                )
-                                .map((menu) => (
-                                    <Card
-                                        id={menu.id}
-                                        name={menu.name}
-                                        price={menu.price}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
-                                    />
-                                ))}
-                        </div>
-                    </div>
+                            {/* NUSANTARA */}
+                            <div className="NUSANTARA mt-10">
+                                <div className="mb-5 sticky top-0">
+                                    <div id="Nusantara" className="text-4xl">NUSANTARA</div>
+                                </div>
+                                <div className="flex flex-wrap gap-5 justify-start">
+                                    {menus
+                                        .filter(
+                                            (menu) =>
+                                                menu.category === "Nusantara"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                price={menu.price}
+                                                id={menu.id}
+                                                name={menu.name}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
+                            </div>
 
-                    {/* NUSANTARA */}
-                    <div className="NUSANTARA mt-10">
-                        <div className="mb-5 sticky top-0">
-                            <div className="text-4xl">NUSANTARA</div>
-                        </div>
-                        <div className="flex flex-wrap gap-5 justify-start">
-                            {menus
-                                .filter((menu) => menu.category === "Nusantara")
-                                .map((menu) => (
-                                    <Card
-                                        price={menu.price}id
-                                        ={menu.id}
-                                        name={menu.name}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
-                                    />
-                                ))}
-                        </div>
-                    </div>
-
-                    {/* SNACK */}
-                    <div className="SNACK mt-10">
-                        <div className="mb-5 sticky top-0">
-                            <div className="text-4xl">SNACK</div>
-                        </div>
-                        <div className="flex flex-wrap gap-5 justify-start">
-                            {menus
-                                .filter((menu) => menu.category === "Snack")
-                                .map((menu) => (
-                                    <Card
-                                        price={menu.price}id
-                                        ={menu.id}
-                                        name={menu.name}
-                                        addSelectedItems={addSelectedItems}
-                                        minusSelectedItems={minusSelectedItems}
-                                        quantity={selectedItems[menu.id] || 0}
-                                    />
-                                ))}
+                            {/* SNACK */}
+                            <div className="SNACK mt-10">
+                                <div className="mb-5 sticky top-0">
+                                    <div id="Snack" className="text-4xl">SNACK</div>
+                                </div>
+                                <div className="flex flex-wrap gap-5 justify-start">
+                                    {menus
+                                        .filter(
+                                            (menu) => menu.category === "Snack"
+                                        )
+                                        .map((menu) => (
+                                            <Card
+                                                price={menu.price}
+                                                id={menu.id}
+                                                name={menu.name}
+                                                addSelectedItems={
+                                                    addSelectedItems
+                                                }
+                                                minusSelectedItems={
+                                                    minusSelectedItems
+                                                }
+                                                quantity={
+                                                    selectedItems[menu.id] || 0
+                                                }
+                                            />
+                                        ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -306,30 +389,45 @@ const Home = ({ menus }) => {
                     Add to Cart
                 </button>
                 {isCartOpen && (
-                <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-4 rounded-lg">
-                        <h2 className="text-2xl font-bold mb-4">
-                            Selected Items
-                        </h2>
-                        <ul>
-                            {localStorage.setItem('selectedItems', JSON.stringify(selectedItems))}
-                            {Object.entries(selectedItems).map(
-                                ([id, quantity]) => (
-                                    quantity != 0 ? (
-                                    <li key={id}>
-                                        Name: {menus.find(menu => menu.id == id).name}
-                                        , Quantity: {quantity}, Price: {(menus.find(menu => menu.id == id).price * quantity).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
-                                    </li>
-                                    ) : null
-                                )
-                            )}
-                        </ul>
-                        <button onClick={() => setIsCartOpen(false)}>
-                            Close
-                        </button>
+                    <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                        <div className="bg-white p-4 rounded-lg">
+                            <h2 className="text-2xl font-bold mb-4">
+                                Selected Items
+                            </h2>
+                            <ul>
+                                {localStorage.setItem(
+                                    "selectedItems",
+                                    JSON.stringify(selectedItems)
+                                )}
+                                {Object.entries(selectedItems).map(
+                                    ([id, quantity]) =>
+                                        quantity != 0 ? (
+                                            <li key={id}>
+                                                Name:{" "}
+                                                {
+                                                    menus.find(
+                                                        (menu) => menu.id == id
+                                                    ).name
+                                                }
+                                                , Quantity: {quantity}, Price:{" "}
+                                                {(
+                                                    menus.find(
+                                                        (menu) => menu.id == id
+                                                    ).price * quantity
+                                                ).toLocaleString("id-ID", {
+                                                    style: "currency",
+                                                    currency: "IDR",
+                                                })}
+                                            </li>
+                                        ) : null
+                                )}
+                            </ul>
+                            <button onClick={() => setIsCartOpen(false)}>
+                                Close
+                            </button>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
             </div>
         </>
     );
