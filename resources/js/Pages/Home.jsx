@@ -311,6 +311,7 @@ const Home = ({ menus }) => {
                             Selected Items
                         </h2>
                         <ul>
+                            {localStorage.setItem('selectedItems', JSON.stringify(selectedItems))}
                             {Object.entries(selectedItems).map(
                                 ([id, quantity]) => (
                                     quantity != 0 ? (
