@@ -6,7 +6,6 @@ import { MdOutlineSearch } from "react-icons/md";
 import { AiOutlineCompass } from "react-icons/ai";
 
 const Home = ({ menus }) => {
-    // State to track selected items and their quantities
     const [selectedItems, setSelectedItems] = useState({});
     const [isCartOpen, setIsCartOpen] = useState(false);
 
