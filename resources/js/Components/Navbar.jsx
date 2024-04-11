@@ -40,7 +40,7 @@ export default function Navbar() {
                     <div className=""></div>
                 </div>
                 <div className="flex flex-wrap justify-center mr-20">
-                    <a className="flex items-center" href="/cart">
+                    <a className="flex items-center" href="">
                         <MdOutlineShoppingBasket size="1.8em" class="mr-6"/>
                         <span className="bg-[#353434] text-white py-4 px-10 rounded-tr-[50px] rounded-br-[20px] rounded-bl-[50px] rounded-tl-[20px] hover:shadow-inner hover:bg-[#4e4d4d]" >Your Cart</span>
                     </a>

@@ -18,15 +18,14 @@ use Inertia\Inertia;
 
 Route::controller(MenuController::class)->group(function() {
     Route::get('/', 'index')->name('homeMenu');
-    Route::get('/cart', 'cart');
 });
 
 Route::controller(AuthController::class)->group(function() {
     Route::get('/admin', 'LoginPage')->name('admin.login');
 });
 
-// Route::get('/cart', function() {
-//     return Inertia::render('user/Cart');
+// Route::get('/admin', function() {
+//     return Inertia::render('admin/Login');
 // });
 
 return Inertia::render('admin/Login');

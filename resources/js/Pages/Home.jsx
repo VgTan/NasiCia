@@ -24,16 +24,6 @@ const Home = ({ menus }) => {
         }));
     };
 
-    function updateSelectedItems(itemId, quantity) {
-        const storedItems = JSON.parse(localStorage.getItem('selectedItems')) || {};
-        if (storedItems[itemId]) {
-            storedItems[itemId] += quantity;
-        } else {
-            storedItems[itemId] = quantity; 
-        }
-        localStorage.setItem('selectedItems', JSON.stringify(storedItems))
-    }
-    
     const handleAddToCart = () => {
         setIsCartOpen(true);
     };
@@ -321,10 +311,9 @@ const Home = ({ menus }) => {
                             Selected Items
                         </h2>
                         <ul>
+                            {localStorage.setItem('selectedItems', JSON.stringify(selectedItems))}
                             {Object.entries(selectedItems).map(
                                 ([id, quantity]) => (
-                                    updateSelectedItems(id, quantity),
-
                                     quantity != 0 ? (
                                     <li key={id}>
                                         Name: {menus.find(menu => menu.id == id).name}
@@ -333,7 +322,6 @@ const Home = ({ menus }) => {
                                     ) : null
                                 )
                             )}
-
                         </ul>
                         <button onClick={() => setIsCartOpen(false)}>
                             Close
