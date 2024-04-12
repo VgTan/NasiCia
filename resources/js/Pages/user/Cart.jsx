@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/Components/Navbar';
 import { router } from '@inertiajs/react';
+import { TiArrowBackOutline } from "react-icons/ti";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const Cart = ({ menus }) => {
     const [storedItems, setStoredItems] = useState(JSON.parse(localStorage.getItem('selectedItems')) || {});
@@ -51,9 +53,12 @@ const Cart = ({ menus }) => {
     return (
         <>
             <Navbar />
-           
             <div className="pt-32 px-28 flex flex-row font-nunito">
-                <div className='w-full mr-10'>
+                <div className="w-full mr-10">
+                <div className="flex flex-wrap">
+                    <MdOutlineShoppingCart className="text-2xl font-bold"/>
+                    <h1 className="font-bold text-2xl mb-8 ml-2 -mt-1">YOUR CART</h1>
+                </div>
                 <form action="" className="">
                     {Object.entries(storedItems).map(([id, quantity]) => (
                         quantity !== 0 ? (
@@ -102,7 +107,7 @@ const Cart = ({ menus }) => {
                     <br />
                 </form>
                 </div>
-                <div className="p-4 w-3/5 shadow-lg">
+                <div className="p-4 px-12 w-3/5 shadow-lg">
                     <div className="flex justify-between mb-4">
                         <p className='font-bold text-lg'>The Total Amount: </p>
                     </div>
@@ -133,6 +138,10 @@ const Cart = ({ menus }) => {
                         ))}
                         <input type="hidden" name="total_price" value={total_price}/> */}
                         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-3xl hover:bg-blue-600 w-full">Checkout</button>
+                        <a href="/" className="text-black px-2 py-2 rounded-3xl w-full flex mt-4 font-bold hover:text-gray-800">
+                            <TiArrowBackOutline className="text-2xl font-thin mr-2 -mt-0.5"/>
+                            Back to Shopping
+                        </a>
                     </form>
 
                 </div>
