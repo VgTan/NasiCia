@@ -1,8 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/Components/Navbar';
+import { router } from '@inertiajs/react';
 
 const Cart = ({ menus }) => {
     const [storedItems, setStoredItems] = useState(JSON.parse(localStorage.getItem('selectedItems')) || {});
+    const [name, setName] = useState('');
+    const [qty, setQty] = useState('');
+    const [clientKey, setClientKey] = useState('');
+
+    useEffect(() => {
+        const names = Object.entries(storedItems).map(([id, quantity]) => {
+            return quantity !== 0 ? menus.find(menu => menu.id == id).name : null;
+        }).filter(name => name !== null);
+
+        setName(names);
+
+        const quan = Object.entries(storedItems).map(([id, quantity]) => {
+            return quantity;
+        }).filter(name => name !== null);
+
+        setQty(quan);
+    }, []);
+
     const handleQuantityChange = (id, delta) => {
     const newQuantity = storedItems[id] + delta;
         if (newQuantity >= 0) { 
@@ -25,9 +44,14 @@ const Cart = ({ menus }) => {
         localStorage.setItem('selectedItems', JSON.stringify(storedItems));
     }, [storedItems]);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        router.post("/checkout", {total_price, name, qty})
+    }
     return (
         <>
             <Navbar />
+           
             <div className="pt-32 px-28 flex flex-row font-nunito">
                 <div className='w-full mr-10'>
                 <form action="" className="">
@@ -66,7 +90,7 @@ const Cart = ({ menus }) => {
                                     <p className='text-sm ml-5 mb-2 font-thin'> Quantity </p>
                                     <div className="ml-4 flex items-center p-0.5 border rounded-md border-slate-300 w-min">
                                         <button className="bg-transparent px-3 py-1" onClick={() => handleQuantityChange(id, -1)}>-</button>
-                                        <input className="border-none w-10 bg-transparent text-center px-3 py-1" type="text" value={storedItems[id]} readOnly />
+                                        <input className="border-none w-10 bg-transparent text-center px-3 py-1" type="text" value={quantity} readOnly />
                                         <button className="bg-transparent px-3 py-1" onClick={() => handleQuantityChange(id, 1)}>+</button>
                                     </div>       
                                 </div>
@@ -92,16 +116,30 @@ const Cart = ({ menus }) => {
                                 <p className="">Rp {total_price * 0.1}</p>
                         </div>
                     </div>
-                        <div className="border-t border-gray-300 h-6"></div>
-                            <div className="flex justify-between mb-10 font-semibold">
-                                <p className="">Total Price include Tax:</p>
-                                <p className="">Rp {total_price_tax}</p>
-                            </div>
-                    <div className='drop-shadow-sm'>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-3xl hover:bg-blue-600 w-full">Checkout</button>
+                    <div className="border-t border-gray-300 h-6"></div>
+                    <div className="flex justify-between mb-10 font-semibold">
+                        <p className="">Total Price include Tax:</p>
+                        <p className="">Rp {total_price_tax}</p>
                     </div>
+                    <form onSubmit={handleSubmit} className='drop-shadow-sm'>
+                        {/* {Object.entries(storedItems).map(([id, quantity]) => (
+                            quantity !== 0 ? (
+                                <React.Fragment key={id}>
+                                    <input type="hidden" name="name[]" value={menus.find(menu => menu.id == id).name}/>
+                                    <input type="hidden" name="qty[]" value={quantity}/>
+                                    <input type="hidden" name="id[]" value={id}/>
+                                </React.Fragment>
+                            ) : null
+                        ))}
+                        <input type="hidden" name="total_price" value={total_price}/> */}
+                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-3xl hover:bg-blue-600 w-full">Checkout</button>
+                    </form>
+
                 </div>
             </div>
+            <script type="text/javascript">
+            
+            </script>
         </>
     );
 };

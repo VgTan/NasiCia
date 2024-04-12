@@ -6,7 +6,7 @@ import { MdOutlineSearch } from "react-icons/md";
 import { AiOutlineCompass } from "react-icons/ai";
 
 const Home = ({ menus }) => {
-    // State to track selected items and their quantities
+    const storedItems = JSON.parse(localStorage.getItem('selectedItems')) || {};
     const [selectedItems, setSelectedItems] = useState({});
     const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -23,6 +23,15 @@ const Home = ({ menus }) => {
             [id]: Math.max((prevState[id] || 0) - 1, 0),
         }));
     };
+
+    function updateSelectedItems(itemId, quantity) {
+        if (storedItems[itemId]) {
+            storedItems[itemId] += quantity;
+        } else {
+            storedItems[itemId] = quantity; 
+        }
+    }
+    
 
     const handleAddToCart = () => {
         setIsCartOpen(true);
@@ -417,7 +426,10 @@ const Home = ({ menus }) => {
                                 )}
                                 {Object.entries(selectedItems).map(
                                     ([id, quantity]) =>
+                                        
                                         quantity != 0 ? (
+                                            updateSelectedItems(id, quantity),
+                                            localStorage.setItem('selectedItems', JSON.stringify(storedItems)),
                                             <li key={id}>
                                                 Name:{" "}
                                                 {
@@ -435,6 +447,7 @@ const Home = ({ menus }) => {
                                                     currency: "IDR",
                                                 })}
                                             </li>
+
                                         ) : null
                                 )}
                             </ul>

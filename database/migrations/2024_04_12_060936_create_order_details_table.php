@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id();
+            $table->String('order_id');
             $table->String('user_name');
-            // $table->String('menu_name');
-            // $table->integer('qty');
-            $table->integer('total_price');
-            $table->enum('status', ['Unpaid', 'Paid'])->default('Unpaid');
+            $table->String('menu_name')->fillable();
+            $table->integer('qty');
+            $table->integer('price');
+            // $table->enum('status', ['Unpaid', 'Paid'])->default('Unpaid');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_details');
     }
 };

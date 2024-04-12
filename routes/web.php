@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\isLoggedIn;
+use App\Http\Middleware\LoggedIn;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,6 +25,11 @@ Route::get('/login', function () {
 Route::controller(MenuController::class)->group(function() {
     Route::get('/', 'index')->name('homeMenu');
     Route::get('/cart', 'cart');
+
+});
+
+Route::controller(OrderController::class)->group(function() {
+    Route::post('/checkout', 'order')->middleware(LoggedIn::class);;
 
 });
 
