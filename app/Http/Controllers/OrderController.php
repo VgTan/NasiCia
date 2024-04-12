@@ -32,13 +32,15 @@ class OrderController extends Controller
         $order->user_name = $user->name;
         $order->total_price = $request->total_price;
         $order->save();
+        $order->order_id = "OR".$order->id;
+        $order->save();
         for ($i = 0; $i < count($request->name); $i++) {
             $name = $request->name[$i];
             $quantity = $request->qty[$i];
             $menu = Menu::where('name', $name)->first();
             
             $od = new OrderDetail;
-            $od->order_id = $order->id;
+            $od->order_id = "OR".$order->id;
             $od->user_name = $user->name;
             $od->menu_name = $name;
             $od->qty = $quantity;

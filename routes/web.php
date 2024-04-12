@@ -30,12 +30,12 @@ Route::controller(MenuController::class)->group(function() {
 });
 
 Route::controller(OrderController::class)->group(function() {
-    Route::post('/checkout', 'order')->middleware(LoggedIn::class);;
-    Route::get('/status', 'index')->middleware(LoggedIn::class);;
+    Route::post('/checkout', 'order')->middleware(LoggedIn::class);
+    Route::get('/status', 'index')->middleware(LoggedIn::class);
 });
 
 Route::controller(MidtransController::class)->group(function() {
-    Route::get('/payment', 'index')->name('checkout')->middleware(LoggedIn::class);;
+    Route::post('/payment', 'pay')->middleware(LoggedIn::class);
 
 });
 
