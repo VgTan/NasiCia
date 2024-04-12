@@ -4,6 +4,7 @@ import CategoryCard from "@/Components/Card/CategoryCard";
 import Card from "@/Components/Card/Card";
 import { MdOutlineSearch } from "react-icons/md";
 import { AiOutlineCompass } from "react-icons/ai";
+import { TbShoppingBagPlus } from "react-icons/tb";
 
 const Home = ({ menus }) => {
     const storedItems = JSON.parse(localStorage.getItem('selectedItems')) || {};
@@ -39,8 +40,7 @@ const Home = ({ menus }) => {
 
     return (
         <>
-       
-            <div className="absolute"></div>
+        <div className="absolute"></div>
             <div className="absolute right-0 overflow-hidden md:px-12 z-[-1]">
                 <div className="bg-yellow-500 md:p-72 rounded-bl-[100px] md:-skew-x-[11deg] md:translate-x-20 md:scale-x-110"></div>
             </div>
@@ -155,7 +155,7 @@ const Home = ({ menus }) => {
                                     Chicken Rice Bowl
                                 </div>
                                 {/* <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3"> */}
-                                <div className="flex flex-wrap gap-5">
+                                <div className="flex flex-wrap gap-10">
                                     {menus
                                         .filter(
                                             (menu) =>
@@ -415,11 +415,16 @@ const Home = ({ menus }) => {
                 </button>
                 {isCartOpen && (
                     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-                        <div className="bg-white p-4 rounded-lg">
-                            <h2 className="text-2xl font-bold mb-4">
-                                Selected Items
-                            </h2>
-                            <ul>
+                        <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8" role="alert">
+                            <div className="flex items-center gap-4">
+                                <span className="shrink-0 rounded-full bg-[#42754ce0] p-2 text-white">
+                                    <TbShoppingBagPlus className="h-4 w-4"/>
+                                </span>
+                                <h2 className="text-2xl font-bold sm:text-lg">
+                                Added to Cart
+                                </h2>
+                            </div>
+                            <ul className="mt-4">
                                 {localStorage.setItem(
                                     "selectedItems",
                                     JSON.stringify(selectedItems)
@@ -430,30 +435,35 @@ const Home = ({ menus }) => {
                                         quantity != 0 ? (
                                             updateSelectedItems(id, quantity),
                                             localStorage.setItem('selectedItems', JSON.stringify(storedItems)),
-                                            <li key={id}>
-                                                Name:{" "}
+                                            <li key={id} className="flex py-2 px-4 flex-row justify-between border-b border-gray-200">
+                                                <span className="text-left mr-5">
+                                                {" "}
                                                 {
                                                     menus.find(
                                                         (menu) => menu.id == id
                                                     ).name
                                                 }
-                                                , Quantity: {quantity}, Price:{" "}
-                                                {(
-                                                    menus.find(
-                                                        (menu) => menu.id == id
-                                                    ).price * quantity
-                                                ).toLocaleString("id-ID", {
-                                                    style: "currency",
-                                                    currency: "IDR",
-                                                })}
+                                                </span>
+                                                <span className="mr-5">
+                                                    {quantity} pcs
+                                                </span>
+                                                <span className="">
+                                                    {(
+                                                        menus.find((menu) => menu.id == id).price * quantity
+                                                    ).toLocaleString("id-ID", {
+                                                        style: "currency",
+                                                        currency: "IDR",
+                                                    })}
+                                                </span>
                                             </li>
-
                                         ) : null
                                 )}
                             </ul>
-                            <button onClick={() => setIsCartOpen(false)}>
+                            <div className="mt-6 sm:flex sm:gap-4">
+                            <button onClick={() => setIsCartOpen(false)} className="inline-block w-full rounded-lg bg-[#42754ce0] px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto">
                                 Close
                             </button>
+                            </div>
                         </div>
                     </div>
                 )}
