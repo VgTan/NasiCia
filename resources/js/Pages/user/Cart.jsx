@@ -3,17 +3,24 @@ import Navbar from '@/Components/Navbar';
 
 const Cart = ({ menus }) => {
     const [storedItems, setStoredItems] = useState(JSON.parse(localStorage.getItem('selectedItems')) || {});
-
     const handleQuantityChange = (id, delta) => {
-        const newQuantity = storedItems[id] + delta;
-        if (newQuantity >= 0) { // Ensure quantity doesn't go below zero
-          setStoredItems(prevStoredItems => ({
+    const newQuantity = storedItems[id] + delta;
+        if (newQuantity >= 0) { 
+            setStoredItems(prevStoredItems => ({
             ...prevStoredItems,
             [id]: newQuantity
-          }));
+            }));
         }
-      };
-
+    };
+    const total_price = Object.entries(storedItems).reduce((total, [id, quantity]) => {
+        const menu = menus.find(menu => menu.id == id);
+        if (menu) {
+            return total + menu.price * quantity;
+        } else {
+            return total;
+            }
+    }, 0);
+    const total_price_tax = total_price + (total_price * 0.1);
     useEffect(() => {
         localStorage.setItem('selectedItems', JSON.stringify(storedItems));
     }, [storedItems]);
@@ -42,7 +49,7 @@ const Cart = ({ menus }) => {
                               <li key={id} className="flex py-6">
                                 <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 shadow-md">
                                   <img
-                                    src={menus.find(menu => menu.image === id)?.image}
+                                    src={`${menus.find(menu => menu.id == id).image}`}
                                     alt="Menu Image"
                                     className="h-full w-full object-cover object-center"
                                   />
@@ -78,17 +85,17 @@ const Cart = ({ menus }) => {
                     <div className="flex flex-col mt-8 mb-4">
                         <div className="flex justify-between mb-4">
                             <p className="">Total Price:</p>
-                            <p className="">$100</p>
+                            <p className="">Rp {total_price}</p>
                         </div>
                         <div className="flex justify-between">
                             <p className="">Tax:</p>
-                            <p className="">$10</p>
+                                <p className="">Rp {total_price * 0.1}</p>
                         </div>
                     </div>
                         <div className="border-t border-gray-300 h-6"></div>
                             <div className="flex justify-between mb-10 font-semibold">
                                 <p className="">Total Price include Tax:</p>
-                                <p className="">$100</p>
+                                <p className="">Rp {total_price_tax}</p>
                             </div>
                     <div className='drop-shadow-sm'>
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-3xl hover:bg-blue-600 w-full">Checkout</button>

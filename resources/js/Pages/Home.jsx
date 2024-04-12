@@ -145,7 +145,8 @@ const Home = ({ menus }) => {
                                 <div id="Chicken Rice Bowl" className="text-xl text-start font-bold mb-3 text-[#42754C]">
                                     Chicken Rice Bowl
                                 </div>
-                                <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3">
+                                {/* <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3"> */}
+                                <div className="flex flex-wrap gap-5">
                                     {menus
                                         .filter(
                                             (menu) =>
@@ -158,6 +159,7 @@ const Home = ({ menus }) => {
                                                 name={menu.name}
                                                 price={menu.price}
                                                 desc={menu.description}
+                                                img = {menu.image}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -188,6 +190,8 @@ const Home = ({ menus }) => {
                                                 id={menu.id}
                                                 name={menu.name}
                                                 price={menu.price}
+                                                desc={menu.description}
+                                                img = {menu.image}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -218,6 +222,8 @@ const Home = ({ menus }) => {
                                                 id={menu.id}
                                                 name={menu.name}
                                                 price={menu.price}
+                                                desc={menu.description}
+                                                img = {menu.image}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -248,6 +254,8 @@ const Home = ({ menus }) => {
                                                 id={menu.id}
                                                 name={menu.name}
                                                 price={menu.price}
+                                                desc={menu.description}
+                                                img = {menu.image}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -275,6 +283,8 @@ const Home = ({ menus }) => {
                                         .map((menu) => (
                                             <Card
                                                 price={menu.price}
+                                                desc={menu.description}
+                                                img = {menu.image}
                                                 id={menu.id}
                                                 name={menu.name}
                                                 addSelectedItems={
@@ -307,6 +317,8 @@ const Home = ({ menus }) => {
                                                 id={menu.id}
                                                 name={menu.name}
                                                 price={menu.price}
+                                                desc={menu.description}
+                                                img = {menu.image}
                                                 addSelectedItems={
                                                     addSelectedItems
                                                 }
@@ -335,6 +347,8 @@ const Home = ({ menus }) => {
                                         .map((menu) => (
                                             <Card
                                                 price={menu.price}
+                                                desc={menu.description}
+                                                img = {menu.image}
                                                 id={menu.id}
                                                 name={menu.name}
                                                 addSelectedItems={
@@ -364,6 +378,8 @@ const Home = ({ menus }) => {
                                         .map((menu) => (
                                             <Card
                                                 price={menu.price}
+                                                desc={menu.description}
+                                                img = {menu.image}
                                                 id={menu.id}
                                                 name={menu.name}
                                                 addSelectedItems={

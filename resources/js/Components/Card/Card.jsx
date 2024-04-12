@@ -13,7 +13,8 @@ export default function Card({ id, name, img, desc, href, quantity, addSelectedI
     return (
         <div className="flex md:border md:rounded-lg md:py-4 md:px-6 z-0">
             <div className="w-[92px] md:w-[172px] cursor-pointer">
-                <img src={img} alt="Menu Photo" className='w-full rounded-lg'/>
+                {/* <img src="" alt="" /> */}
+                <img src={`${img}`} alt="Menu Photo" className='w-full rounded-lg'/>
             </div>
             <div className="flex-1 pl-[15px] md:pl-[30px] space-y-1 md:space-y-2 w-[150px] h-auto">
                 <a href={href} className="">
