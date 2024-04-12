@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 class OrderController extends Controller
 {
+    public function index() {
+        $user = Auth()->user();
+        $order = Order::where('user_id', $user->id)->get();
+        // dd($order);
+        return Inertia::render('user/History', [
+            'user' => $user,
+            'order' => $order
+        ]);
+    }
     public function order(Request $request) {
         // dd($request->all()); 
         $user = Auth()->user();
@@ -19,6 +28,7 @@ class OrderController extends Controller
             'qty' => 'required'
         ]);
         $order = new Order;
+        $order->user_id = $user->id;
         $order->user_name = $user->name;
         $order->total_price = $request->total_price;
         $order->save();
@@ -38,31 +48,9 @@ class OrderController extends Controller
             // OrderDetail::create(['user_name' => $user, 'menu_name' => $name, 'qty' => $quantity, 'price' => $menu->price*$quantity]);
         }
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
-
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => $order->id,
-                'gross_amount' => $order->total_price,
-            ),
-            'customer_details' => array(
-                'first_name' => $user->name,
-                'last_name' => '',
-                // 'email' => $user->email,
-            ),
-        );
-
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        
         // dd($snapToken);
-        // return Inertia::render('user/CheckOut', [
-        //     'snapToken' => $snapToken
-        // ]);
+        return redirect('/status');
         return view('checkout', compact('snapToken', 'order'));
         // return redirect("/");
         // Order::create($request->all());
